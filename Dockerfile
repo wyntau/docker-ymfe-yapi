@@ -14,6 +14,6 @@ WORKDIR /app/vendors
 EXPOSE 3000
 
 COPY --from=builder /vendors /app/vendors
+COPY ./entrypoint.sh /app/vendors/
 
-ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["npm", "run", "install-server", "&& node", "server/app.js"]
+ENTRYPOINT ["/app/vendors/entrypoint.sh"]
