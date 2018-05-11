@@ -1,9 +1,10 @@
 #!/bin/sh
 
-echo $1;
-
-if [ "$1" = "init" ]; then
+if [ ! -e "/app/runtime/init.lock" ]; then
+  echo "========================"
+  echo "Installing server ......"
+  echo "========================"
   npm run install-server
 fi;
 
-/sbin/tini -- node server/app.js
+node /app/vendors/server/app.js
