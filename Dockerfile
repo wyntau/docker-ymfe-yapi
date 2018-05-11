@@ -10,10 +10,10 @@ RUN git clone --depth 1 https://github.com/YMFE/yapi.git /vendors \
 FROM node:8-alpine
 RUN apk add --no-cache tini
 
-WORKDIR /app
+WORKDIR /app/vendors
 EXPOSE 3000
 
 COPY --from=builder /vendors /app/vendors
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["npm", "run", "install-server", "&& node", "/app/vendors/server/app.js"]
+CMD ["npm", "run", "install-server", "&& node", "server/app.js"]
