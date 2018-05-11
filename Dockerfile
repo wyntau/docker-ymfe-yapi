@@ -1,6 +1,6 @@
 FROM node:8-alpine
 
-RUN apk add --no-cache git tini
+RUN apk add --no-cache git tini python
 
 WORKDIR /app
 
