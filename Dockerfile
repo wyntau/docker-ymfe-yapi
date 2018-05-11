@@ -2,7 +2,7 @@ FROM node:8-alpine as builder
 
 ARG TAG=v1.3.15
 
-RUN apk add --no-cache git tini python make
+RUN apk add --no-cache git python make
 
 RUN git clone --branch $TAG --depth 1 https://github.com/YMFE/yapi.git /vendors \
     && cd /vendors \
