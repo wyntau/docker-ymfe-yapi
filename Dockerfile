@@ -6,8 +6,7 @@ WORKDIR /app
 
 RUN mkdir -p /app && git clone --depth 1 https://github.com/YMFE/yapi.git /app/vendors \
     && cd /app/vendors \
-    && npm install --production --registry https://registry.npm.taobao.org \
-    && npm run install-server
+    && npm install --production --registry https://registry.npm.taobao.org
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["node", "/app/vendors/server/app.js"]
+CMD ["npm", "run", "install-server", "&& node", "/app/vendors/server/app.js"]
