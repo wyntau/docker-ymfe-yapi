@@ -1,13 +1,13 @@
 FROM node:8-alpine as builder
 
 ARG TAG=v1.3.15
-ARG REGISTRY=https://registry.yarnpkg.com/
+ARG REGISTRY=https://registry.npm.taobao.org
 
 RUN apk add --no-cache git python make \
     && git clone --branch $TAG --depth 1 https://github.com/YMFE/yapi.git /vendors \
     && cd /vendors \
     && sed -i -e 's/init\.lock/runtime\/init\.lock/' server/install.js \
-    && yarn --production --registry ${REGISTRY}
+    && npm install --no-optional --production --registry ${REGISTRY}
 
 FROM node:8-alpine
 RUN apk add --no-cache tini
