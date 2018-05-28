@@ -17,7 +17,7 @@
       volumes:
         - ./mongo-data:/data/db
     yapi:
-      image: daocloud.io/wyntau/yapi
+      image: wyntau/ymfe-yapi
       container_name: yapi
       depends_on:
         - mongo
