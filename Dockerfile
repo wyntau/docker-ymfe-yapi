@@ -1,6 +1,6 @@
 FROM node:8-alpine as builder
 
-ARG TAG=v1.3.22
+ARG TAG=v1.5.6
 ARG REGISTRY=https://registry.npm.taobao.org
 
 RUN apk add --no-cache git python make g++ \
